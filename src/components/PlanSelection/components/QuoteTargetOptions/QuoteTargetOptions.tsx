@@ -1,8 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import styles from './PlanSelection.module.scss';
-import type { QuoteTarget, QuoteTargetOption } from './types';
+import styles from './QuoteTargetOptions.module.scss';
+import type { QuoteTarget, QuoteTargetOption } from '../../types';
 
 interface QuoteTargetOptionsProps {
     options: QuoteTargetOption[];
@@ -12,30 +12,26 @@ interface QuoteTargetOptionsProps {
 
 export function QuoteTargetOptions({ options, selectedOption, onSelect }: QuoteTargetOptionsProps) {
     return (
-        <div className={styles.planSelection__options}>
+        <div className={styles.options}>
             {options.map((option) => {
                 const isSelected = selectedOption === option.value;
                 return (
-                    <label
-                        key={option.value}
-                        className={styles.planSelection__option}
-                        data-selected={isSelected}
-                    >
+                    <label key={option.value} className={styles.option} data-selected={isSelected}>
                         <input
                             type="radio"
                             name="quoteTarget"
                             value={option.value}
                             checked={isSelected}
                             onChange={() => onSelect(option.value)}
-                            className={styles.planSelection__radio}
+                            className={styles.radio}
                         />
-                        <span className={styles.planSelection__checkmark} aria-hidden="true" />
-                        <article className={styles.planSelection__optionContent}>
-                            <div className={styles.planSelection__iconWrapper}>
+                        <span className={styles.checkmark} aria-hidden="true" />
+                        <article className={styles.content}>
+                            <div className={styles.iconWrapper}>
                                 <Image src={option.icon} alt="" width={48} height={48} priority />
                             </div>
-                            <h2 className={styles.planSelection__optionTitle}>{option.label}</h2>
-                            <p className={styles.planSelection__optionDescription}>{option.description}</p>
+                            <h2 className={styles.title}>{option.label}</h2>
+                            <p className={styles.description}>{option.description}</p>
                         </article>
                     </label>
                 );

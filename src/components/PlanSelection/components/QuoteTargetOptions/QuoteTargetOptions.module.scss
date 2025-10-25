@@ -1,0 +1,103 @@
+@import "@/styles/variables";
+
+.options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
+  gap: $spacing-lg;
+  margin-top: $spacing-lg;
+}
+
+.option {
+  position: relative;
+  border: 2px solid $neutral-n100;
+  border-radius: 24px;
+  background: $neutral-n0;
+  box-shadow: 0 24px 60px rgba(20, 25, 56, 0.08);
+  padding: $spacing-xl;
+  cursor: pointer;
+  min-height: 216px;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.option:hover {
+  border-color: $blueberry-b600;
+  box-shadow: 0 32px 72px rgba(20, 25, 56, 0.14);
+}
+
+.option[data-selected="true"] {
+  border-color: $blueberry-b600;
+  box-shadow: 0 32px 72px rgba(20, 25, 56, 0.18);
+}
+
+.radio {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.checkmark {
+  position: absolute;
+  top: $spacing-md;
+  right: $spacing-md;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid $neutral-n200;
+  background: $neutral-n0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkmark::after {
+  content: "";
+  width: 8px;
+  height: 14px;
+  border: solid transparent;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  display: none;
+}
+
+.option[data-selected="true"] .checkmark {
+  background: $feedback-success-ss300;
+  border-color: $feedback-success-ss300;
+}
+
+.option[data-selected="true"] .checkmark::after {
+  display: block;
+  border-color: $neutral-n0;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.iconWrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: 20px;
+  background: $neutral-n100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  margin: 0;
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: $grey-100;
+}
+
+.description {
+  margin: 0;
+  font-size: $font-size-sm;
+  color: $neutral-n600;
+  line-height: $line-height-relaxed;
+}

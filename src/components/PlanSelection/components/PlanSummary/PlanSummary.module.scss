@@ -1,0 +1,114 @@
+@import "@/styles/variables";
+
+.summary {
+  margin-top: $spacing-2xl;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+}
+
+.title {
+  margin: 0;
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-bold;
+  color: $grey-100;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: $spacing-xl;
+}
+
+.card {
+  background: $neutral-n0;
+  border-radius: 24px;
+  padding: $spacing-xl;
+  box-shadow: 0 24px 60px rgba(20, 25, 56, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $grey-100;
+}
+
+.details {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.detailRow {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  dt {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-base;
+    color: $neutral-n600;
+  }
+
+  dd {
+    margin: 0;
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    color: $grey-100;
+  }
+}
+
+.planHeader {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.iconWrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: 20px;
+  background: $neutral-n100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.planInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.planName {
+  margin: 0;
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: $grey-100;
+}
+
+.priceGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pricePrevious {
+  font-size: $font-size-sm;
+  color: $neutral-n600;
+  text-decoration: line-through;
+}
+
+.priceFinal {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: $grey-100;
+}
