@@ -1,0 +1,166 @@
+// ==========================================
+// LAYOUT VARIABLES
+// ==========================================
+$max-width-container: 1360px;
+$padding-desktop: 120px;
+$padding-mobile: 24px;
+
+// Component specific
+$hero-padding-top: 32px;
+$hero-padding-bottom: 48px;
+$hero-desktop-padding-left: 128px;
+$hero-desktop-padding-right: 216px;
+$hero-desktop-padding-bottom: 80px;
+
+// ==========================================
+// BREAKPOINTS
+// ==========================================
+$breakpoint-mobile: 768px;
+$breakpoint-tablet: 1024px;
+$breakpoint-desktop: 1360px;
+
+// ==========================================
+// SPACING SYSTEM
+// ==========================================
+$spacing-xs: 8px;
+$spacing-sm: 16px;
+$spacing-md: 24px;
+$spacing-lg: 32px;
+$spacing-xl: 48px;
+$spacing-2xl: 64px;
+
+// ==========================================
+// TYPOGRAPHY
+// ==========================================
+// Font sizes
+$font-size-xs: 12px;
+$font-size-sm: 14px;
+$font-size-base: 16px;
+$font-size-lg: 18px;
+$font-size-xl: 20px;
+$font-size-2xl: 24px;
+$font-size-3xl: 28px;
+$font-size-4xl: 32px;
+
+// Line heights
+$line-height-tight: 16px;
+$line-height-base: 20px;
+$line-height-relaxed: 24px;
+$line-height-loose: 28px;
+
+// Font weights
+$font-weight-regular: 400;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// Letter spacing
+$letter-spacing-tight: 0.2px;
+$letter-spacing-base: 0.4px;
+
+// ==========================================
+// BORDER RADIUS
+// ==========================================
+$border-radius-sm: 4px;
+$border-radius-base: 8px;
+$border-radius-lg: 14px;
+
+// ==========================================
+// COLORS
+// ==========================================
+// Neutrals
+$neutral-n700: #141938;
+$neutral-n600: #7981b2;
+$neutral-n500: #a9afd9;
+$neutral-n400: #d7dbf5;
+$neutral-n200: #edeffc;
+$neutral-n100: #fafbff;
+$neutral-n0: #ffffff;
+
+// Grey
+$grey-150: #0a051e;
+$grey-100: #03050f;
+$grey-80: #2b304e;
+$grey-60: #5e6488;
+$grey-30: #ccd1ee;
+$grey-10: #f8f9ff;
+$grey-0: #ffffff;
+
+// Blue Berry
+$blueberry-b700: #432eff;
+$blueberry-b600: #4f4fff;
+
+// Red RIMAC
+$red-rimac-r500: #ff1c44;
+
+// Green Aqua
+$green-aqua-g400: #7df0ba;
+
+// Blur Assets
+$blur-violet-80: #c333ff;
+$blur-aqua-100: #00f4e2;
+
+// Feedback
+$feedback-success-ss300: #389e0d;
+
+// Web
+$web-gray-4: #c5cbe0;
+
+// Glyph
+$glyph-primary-100: #03050f;
+
+// ==========================================
+// GRADIENTS
+// ==========================================
+$gradient-icon-accent-light: linear-gradient(
+  156.04deg,
+  #34263b 27.21%,
+  #13172c 65.81%
+);
+$gradient-icon-primary: linear-gradient(135deg, #f7052d 34.07%, #ca5afa 75.27%);
+$gradient-aqua-lemon: linear-gradient(86.01deg, #00f4e2 0%, #00ff7f 100%);
+
+// ==========================================
+// MIXINS
+// ==========================================
+// Flexbox center
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// Container
+@mixin container {
+  max-width: $max-width-container;
+  margin: 0 auto;
+  padding: 0 $padding-desktop;
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 0 $padding-mobile;
+  }
+}
+
+// Responsive media queries
+@mixin mobile {
+  @media (max-width: $breakpoint-mobile) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $breakpoint-desktop) {
+    @content;
+  }
+}

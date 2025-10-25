@@ -1,0 +1,143 @@
+@import "@/styles/variables";
+
+.hero {
+  padding: 2px $padding-desktop;
+
+  @include mobile {
+    padding: 12px $padding-mobile;
+  }
+
+  &__container {
+    max-width: $max-width-container;
+    margin: 0 auto;
+    display: flex;
+    gap: $spacing-md;
+    @include mobile {
+      flex-direction: column;
+    }
+  }
+
+  // Left section with image
+  &__content {
+    display: flex;
+    padding: $hero-padding-top 0 $hero-padding-bottom;
+
+    @include mobile {
+      padding: 0;
+      margin-top: $spacing-sm;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+  }
+
+  &__text {
+    display: none;
+
+    @include mobile {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__image {
+    height: auto;
+
+    &--desktop {
+      width: 100%;
+      height: auto;
+      display: block;
+
+      @include mobile {
+        display: none;
+      }
+    }
+
+    &--mobile {
+      display: none;
+
+      @include mobile {
+        display: block;
+        width: 136px;
+        height: 160px;
+        border-radius: $border-radius-lg;
+      }
+    }
+  }
+
+  // Right section with form
+  &__form {
+    display: flex;
+    flex-direction: column;
+    padding: $hero-padding-top $hero-desktop-padding-right
+      $hero-desktop-padding-bottom $hero-desktop-padding-left;
+    gap: $spacing-md;
+    max-width: 696px;
+
+    @include mobile {
+      padding: 0;
+    }
+  }
+
+  &__header {
+    max-width: 352px;
+    display: flex;
+    flex-direction: column;
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__badge {
+    background: $gradient-aqua-lemon;
+    padding: 4px $spacing-xs;
+    width: fit-content;
+    border-radius: $border-radius-sm;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-sm;
+    line-height: $line-height-tight;
+    letter-spacing: $letter-spacing-base;
+    color: $grey-100;
+
+    @include mobile {
+      padding: 2px $spacing-xs;
+      font-size: $font-size-xs;
+    }
+  }
+
+  &__title {
+    font-weight: $font-weight-bold;
+    font-size: $font-size-4xl;
+    line-height: 40px;
+    color: $grey-100;
+    margin: 10px 0;
+
+    @include mobile {
+      max-width: 188px;
+      font-size: $font-size-3xl;
+      line-height: 36px;
+    }
+  }
+
+  &__subtitle {
+    margin: 10px 0;
+    font-weight: $font-weight-semibold;
+    font-size: $font-size-sm;
+    line-height: $line-height-base;
+    letter-spacing: $letter-spacing-tight;
+    color: $grey-100;
+
+    &--mobile {
+      display: none;
+      font-weight: $font-weight-semibold;
+      line-height: $line-height-base;
+      letter-spacing: $letter-spacing-tight;
+      color: $grey-100;
+
+      @include mobile {
+        display: block;
+      }
+    }
+  }
+}

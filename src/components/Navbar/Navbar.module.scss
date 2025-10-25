@@ -1,0 +1,65 @@
+@import "@/styles/variables";
+.navbar {
+  height: 64px;
+  padding: 2px $padding-desktop;
+
+  @include mobile {
+    padding: 12px $padding-mobile;
+  }
+
+  &__container {
+    max-width: $max-width-container;
+    margin: 0 auto;
+    @include flex-between;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo-image {
+    filter: brightness(0) saturate(100%) invert(17%) sepia(97%) saturate(6947%)
+      hue-rotate(354deg) brightness(95%) contrast(115%);
+  }
+
+  &__contact {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+  }
+
+  &__text {
+    font-size: $font-size-xs;
+    color: $grey-100;
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-tight;
+    letter-spacing: $letter-spacing-tight;
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__phone__container {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+  }
+
+  &__phone {
+    font-size: $font-size-lg;
+    line-height: $line-height-base;
+    letter-spacing: $letter-spacing-base;
+    font-weight: $font-weight-bold;
+    color: $grey-100;
+  }
+}

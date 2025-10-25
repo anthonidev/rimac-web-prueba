@@ -1,0 +1,53 @@
+@import "@/styles/variables";
+.footer {
+  background-color: $grey-100;
+  padding: $spacing-lg $padding-desktop;
+
+  @include mobile {
+    padding: $spacing-lg $padding-mobile;
+  }
+
+  &__container {
+    max-width: $max-width-container;
+    margin: 0 auto;
+    @include flex-between;
+
+    @include mobile {
+      flex-direction: column;
+      gap: $spacing-md;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo-image {
+    filter: none;
+  }
+
+  &__copyright {
+    display: flex;
+    align-items: center;
+
+    span {
+      font-size: $font-size-sm;
+      color: $grey-10;
+      font-weight: $font-weight-regular;
+      line-height: $line-height-tight;
+    }
+  }
+
+  &__divider {
+    display: none;
+    border: none;
+    margin: 0;
+
+    @include mobile {
+      display: block;
+      border-top: 1px solid $grey-80;
+      width: 336px;
+    }
+  }
+}
