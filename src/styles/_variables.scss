@@ -17,6 +17,8 @@ $hero-desktop-padding-bottom: 80px;
 // ==========================================
 $breakpoint-mobile: 768px;
 $breakpoint-tablet: 1024px;
+$breakpoint-laptop-min: 1025px;
+$breakpoint-laptop: 1280px;
 $breakpoint-desktop: 1360px;
 
 // ==========================================
@@ -155,6 +157,12 @@ $gradient-aqua-lemon: linear-gradient(86.01deg, #00f4e2 0%, #00ff7f 100%);
 
 @mixin tablet {
   @media (max-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (min-width: $breakpoint-laptop-min) and (max-width: $breakpoint-laptop) {
     @content;
   }
 }

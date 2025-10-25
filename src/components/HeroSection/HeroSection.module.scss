@@ -3,6 +3,14 @@
 .hero {
   padding: 2px $padding-desktop;
 
+  @include laptop {
+    padding: 12px $spacing-2xl;
+  }
+
+  @include tablet {
+    padding: 12px $spacing-xl;
+  }
+
   @include mobile {
     padding: 12px $padding-mobile;
   }
@@ -12,6 +20,12 @@
     margin: 0 auto;
     display: flex;
     gap: $spacing-md;
+
+    @include tablet {
+      align-items: center;
+      gap: $spacing-sm;
+    }
+
     @include mobile {
       flex-direction: column;
     }
@@ -22,8 +36,17 @@
     display: flex;
     padding: $hero-padding-top 0 $hero-padding-bottom;
 
+    @include laptop {
+      padding: $spacing-xl 0 $spacing-2xl;
+    }
+
+    @include tablet {
+      padding: $spacing-lg 0 $spacing-xl;
+    }
+
     @include mobile {
       padding: 0;
+      width: 100%;
       margin-top: $spacing-sm;
       justify-content: space-between;
       align-items: center;
@@ -48,6 +71,14 @@
       height: auto;
       display: block;
 
+      @include laptop {
+        max-width: 420px;
+      }
+
+      @include tablet {
+        max-width: 360px;
+      }
+
       @include mobile {
         display: none;
       }
@@ -58,8 +89,8 @@
 
       @include mobile {
         display: block;
-        width: 136px;
-        height: 160px;
+        width: 152px;
+        height: 180px;
         border-radius: $border-radius-lg;
       }
     }
@@ -74,8 +105,21 @@
     gap: $spacing-md;
     max-width: 696px;
 
+    @include laptop {
+      padding: $spacing-2xl $spacing-2xl $spacing-xl $spacing-xl;
+      max-width: 560px;
+    }
+
+    @include tablet {
+      padding: $spacing-xl;
+      max-width: 100%;
+    }
+
     @include mobile {
       padding: 0;
+      border-top: 1px solid $grey-30;
+      margin-top: $spacing-sm;
+      padding-top: $spacing-sm;
     }
   }
 
@@ -83,6 +127,14 @@
     max-width: 352px;
     display: flex;
     flex-direction: column;
+
+    @include laptop {
+      max-width: 420px;
+    }
+
+    @include tablet {
+      max-width: 100%;
+    }
 
     @include mobile {
       display: none;
@@ -113,6 +165,16 @@
     color: $grey-100;
     margin: 10px 0;
 
+    @include laptop {
+      font-size: $font-size-4xl;
+      line-height: 38px;
+    }
+
+    @include tablet {
+      font-size: $font-size-3xl;
+      line-height: 36px;
+    }
+
     @include mobile {
       max-width: 188px;
       font-size: $font-size-3xl;
@@ -127,6 +189,16 @@
     line-height: $line-height-base;
     letter-spacing: $letter-spacing-tight;
     color: $grey-100;
+
+    @include laptop {
+      font-size: $font-size-base;
+      line-height: $line-height-relaxed;
+    }
+
+    @include tablet {
+      font-size: $font-size-base;
+      line-height: $line-height-relaxed;
+    }
 
     &--mobile {
       display: none;

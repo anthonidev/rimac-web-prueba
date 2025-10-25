@@ -3,6 +3,14 @@
   height: 64px;
   padding: 2px $padding-desktop;
 
+  @include laptop {
+    padding: 2px $spacing-2xl;
+  }
+
+  @include tablet {
+    padding: 12px $spacing-xl;
+  }
+
   @include mobile {
     padding: 12px $padding-mobile;
   }

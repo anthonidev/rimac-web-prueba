@@ -3,6 +3,14 @@
   background-color: $grey-100;
   padding: $spacing-lg $padding-desktop;
 
+  @include laptop {
+    padding: $spacing-lg $spacing-2xl;
+  }
+
+  @include tablet {
+    padding: $spacing-lg $spacing-xl;
+  }
+
   @include mobile {
     padding: $spacing-lg $padding-mobile;
   }
