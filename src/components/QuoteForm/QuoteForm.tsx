@@ -5,6 +5,7 @@ import {
   useQuoteForm,
   type QuoteFormValues,
 } from './useQuoteForm';
+import { useQuoteApi } from '@/hooks/useQuoteApi';
 
 export default function QuoteForm() {
   const {
@@ -16,8 +17,13 @@ export default function QuoteForm() {
     handleDocumentTypeChange,
   } = useQuoteForm();
 
-  const onSubmit = (data: QuoteFormValues) => {
-    console.log(data);
+  const { submitQuote, isLoading, error: apiError } = useQuoteApi();
+
+  const onSubmit = async (data: QuoteFormValues) => {
+    await submitQuote({
+      documentNumber: data.documentNumber,
+      phone: data.phone,
+    });
   };
 
   const documentClassName = [
@@ -126,9 +132,6 @@ export default function QuoteForm() {
             Acepto la Política de Privacidad
           </span>
         </label>
-        {errors.acceptPrivacy && (
-          <span className={styles.form__error}>{errors.acceptPrivacy.message}</span>
-        )}
       </div>
 
       <div className={styles.form__control}>
@@ -144,9 +147,6 @@ export default function QuoteForm() {
             Acepto la Política de Comunicaciones Comerciales
           </span>
         </label>
-        {errors.acceptCommunications && (
-          <span className={styles.form__error}>{errors.acceptCommunications.message}</span>
-        )}
       </div>
 
       {/* Terms link */}
@@ -155,9 +155,20 @@ export default function QuoteForm() {
       </a>
 
       {/* Submit button */}
-      <button type="submit" className={styles.form__submit}>
-        Cotiza aquí
+      <button
+        type="submit"
+        className={styles.form__submit}
+        disabled={isLoading}
+      >
+        {isLoading ? 'Procesando...' : 'Cotiza aquí'}
       </button>
+
+      {/* API Error message */}
+      {apiError && (
+        <span className={styles.form__error} style={{ marginTop: '8px', display: 'block', textAlign: 'center' }}>
+          {apiError}
+        </span>
+      )}
     </form>
   );
 }

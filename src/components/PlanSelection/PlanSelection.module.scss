@@ -1,0 +1,653 @@
+@import "@/styles/variables";
+
+.planSelection {
+  background: $neutral-n100;
+  color: $grey-100;
+  overflow: hidden;
+
+  &__progressArea {
+    position: relative;
+    left: 50%;
+    width: 100vw;
+    margin-left: -50vw;
+    padding: $spacing-md 0;
+    background: $neutral-n200;
+
+    @include mobile {
+      background: transparent;
+      padding: $spacing-sm 0;
+    }
+  }
+
+  &__progressNav {
+    max-width: $max-width-container;
+    margin: 0 auto;
+    padding: 0 $padding-desktop;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-lg;
+
+    @include tablet {
+      padding: 0 $spacing-xl;
+    }
+
+    @include mobile {
+      padding: 0 $padding-mobile;
+      justify-content: flex-start;
+      gap: $spacing-sm;
+      border-bottom: 1px solid $neutral-n400;
+      width: 100%;
+    }
+  }
+
+  &__steps {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: $spacing-lg;
+    margin: 0;
+    padding: 0;
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__step {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-sm;
+    font-size: $font-size-sm;
+    color: $neutral-n600;
+  }
+
+  &__step[data-active="true"] {
+    color: $grey-100;
+
+    .planSelection__stepNumber {
+      background: $blueberry-b600;
+      color: $neutral-n0;
+      border-color: transparent;
+    }
+  }
+
+  &__stepNumber {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid $neutral-n400;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: $font-weight-semibold;
+    background: $neutral-n0;
+    color: $neutral-n600;
+  }
+
+  &__stepLabel {
+    font-weight: $font-weight-semibold;
+  }
+
+  &__stepDivider {
+    display: inline-block;
+    width: 72px;
+    height: 0;
+    margin-left: $spacing-md;
+    border-bottom: 1px dashed $neutral-n400;
+  }
+
+  &__stepsMobile {
+    display: none;
+
+    @include mobile {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-xs;
+      flex: 1;
+    }
+  }
+
+  &__stepsMobileLabel {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    letter-spacing: $letter-spacing-base;
+    text-transform: uppercase;
+    color: $grey-100;
+  }
+
+  &__stepsMobileBar {
+    width: 100%;
+    height: 6px;
+    border-radius: $border-radius-base;
+    background: $neutral-n200;
+    overflow: hidden;
+  }
+
+  &__stepsMobileBarFill {
+    display: block;
+    height: 100%;
+    background: $blueberry-b600;
+    border-radius: inherit;
+    transition: width 0.3s ease;
+  }
+
+  &__backButton {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-xs;
+    background: transparent;
+    border: none;
+    padding: 0;
+    color: $blueberry-b600;
+    font-weight: $font-weight-semibold;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+
+  &__backButton:hover {
+    color: $blueberry-b700;
+  }
+
+  &__backButton--desktop {
+    display: inline-flex;
+    align-self: flex-start;
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__backButton--mobile {
+    display: none;
+
+    @include mobile {
+      display: inline-flex;
+      color: $grey-100;
+    }
+  }
+
+  &__backButton--mobile:hover {
+    @include mobile {
+      color: $grey-100;
+    }
+  }
+
+  &__backIcon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid $neutral-n400;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: $neutral-n0;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+
+    @include mobile {
+      width: 32px;
+      height: 32px;
+      border: none;
+      background: transparent;
+      font-size: $font-size-base;
+    }
+  }
+
+  &__backLabel {
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__wrapper {
+    max-width: $max-width-container;
+    margin: 0 auto;
+    padding: $spacing-2xl $padding-desktop $spacing-2xl;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-2xl;
+
+    @include tablet {
+      padding: $spacing-2xl $spacing-xl;
+    }
+
+    @include mobile {
+      padding: $spacing-xl $padding-mobile;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-2xl;
+  }
+
+  &__intro {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+    align-items: center;
+
+    @include mobile {
+      margin: 0;
+      text-align: left;
+      align-items: flex-start;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-bold;
+    line-height: 1.2;
+    color: $grey-100;
+  }
+
+  &__subtitle {
+    margin: 0;
+    font-size: $font-size-base;
+    color: $neutral-n600;
+  }
+
+  &__form {
+    width: 100%;
+  }
+
+  &__fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__legend {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    letter-spacing: $letter-spacing-base;
+    text-transform: uppercase;
+    color: $neutral-n600;
+  }
+
+  &__options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
+    gap: $spacing-lg;
+    margin-top: $spacing-lg;
+  }
+
+  &__option {
+    position: relative;
+    border: 2px solid $neutral-n100;
+    border-radius: 24px;
+    background: $neutral-n0;
+    box-shadow: 0 24px 60px rgba(20, 25, 56, 0.08);
+    padding: $spacing-xl;
+    cursor: pointer;
+    min-height: 216px;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  &__option:hover {
+    border-color: $blueberry-b600;
+    box-shadow: 0 32px 72px rgba(20, 25, 56, 0.14);
+  }
+
+  &__option[data-selected="true"] {
+    border-color: $blueberry-b600;
+    box-shadow: 0 32px 72px rgba(20, 25, 56, 0.18);
+  }
+
+  &__radio {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &__checkmark {
+    position: absolute;
+    top: $spacing-md;
+    right: $spacing-md;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid $neutral-n200;
+    background: $neutral-n0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__checkmark::after {
+    content: "";
+    width: 8px;
+    height: 14px;
+    border: solid transparent;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    display: none;
+  }
+
+  &__option[data-selected="true"] .planSelection__checkmark {
+    background: $feedback-success-ss300;
+    border-color: $feedback-success-ss300;
+  }
+
+  &__option[data-selected="true"] .planSelection__checkmark::after {
+    display: block;
+    border-color: $neutral-n0;
+  }
+
+  &__optionContent {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+
+  &__iconWrapper {
+    width: 64px;
+    height: 64px;
+    border-radius: 20px;
+    background: $neutral-n100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__optionTitle {
+    margin: 0;
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    color: $grey-100;
+  }
+
+  &__optionDescription {
+    margin: 0;
+    font-size: $font-size-sm;
+    color: $neutral-n600;
+    line-height: $line-height-relaxed;
+  }
+
+  &__helper {
+    margin-top: $spacing-xl;
+    font-size: $font-size-base;
+    color: $neutral-n600;
+  }
+
+  &__plans {
+    margin-top: $spacing-2xl;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
+    gap: $spacing-xl;
+  }
+
+  &__planCard {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+    background: $neutral-n0;
+    border-radius: 28px;
+    padding: $spacing-2xl $spacing-xl;
+    box-shadow: 0 32px 68px rgba(20, 25, 56, 0.12);
+    border: 2px solid transparent;
+    min-height: 100%;
+    transition: transform 0.2s ease, box-shadow 0.2s ease,
+      border-color 0.2s ease;
+  }
+
+  &__planCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 40px 90px rgba(20, 25, 56, 0.18);
+  }
+
+  &__planCard[data-recommended="true"] {
+    border-color: $blueberry-b600;
+    box-shadow: 0 48px 96px rgba(67, 46, 255, 0.2);
+  }
+
+  &__planBadge {
+    position: absolute;
+    top: $spacing-lg;
+    left: $spacing-xl;
+    padding: 4px $spacing-sm;
+    border-radius: 9999px;
+    background: $green-aqua-g400;
+    color: $grey-100;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-xs;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-base;
+  }
+
+  &__planCardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: $spacing-md;
+  }
+
+  &__planTitle {
+    margin: 0;
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-bold;
+    color: $grey-100;
+  }
+
+  &__planLabel {
+    margin: $spacing-sm 0 0;
+    text-transform: uppercase;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    letter-spacing: $letter-spacing-base;
+    color: $neutral-n600;
+  }
+
+  &__planPriceBlock {
+    margin-top: $spacing-sm;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__planPricePrevious {
+    font-size: $font-size-sm;
+    color: $neutral-n600;
+    text-decoration: line-through;
+  }
+
+  &__planPriceCurrent {
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-bold;
+    color: $grey-100;
+  }
+
+  &__planIconWrapper {
+    width: 64px;
+    height: 64px;
+    border-radius: 20px;
+    background: $neutral-n100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__planDivider {
+    width: 100%;
+    height: 1px;
+    background: $neutral-n200;
+  }
+
+  &__planFeatures {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+    color: $neutral-n600;
+  }
+
+  &__planFeatureItem {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-sm;
+  }
+
+  &__planFeatureBullet {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: $blueberry-b600;
+    margin-top: 8px;
+    flex-shrink: 0;
+  }
+
+  &__planFeatureText {
+    font-size: $font-size-base;
+    line-height: $line-height-loose;
+    color: $grey-100;
+  }
+
+  &__planFeatureText strong {
+    font-weight: $font-weight-semibold;
+    color: $grey-100;
+  }
+
+  &__planButton {
+    margin-top: auto;
+    align-self: stretch;
+    padding: $spacing-sm;
+    background: $red-rimac-r500;
+    color: $neutral-n0;
+    border: none;
+    border-radius: 32px;
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  &__planButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 32px rgba(255, 28, 68, 0.3);
+  }
+
+  &__summary {
+    margin-top: $spacing-2xl;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xl;
+  }
+
+  &__summaryTitle {
+    margin: 0;
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-bold;
+    color: $grey-100;
+  }
+
+  &__summaryGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: $spacing-xl;
+  }
+
+  &__summaryCard {
+    background: $neutral-n0;
+    border-radius: 24px;
+    padding: $spacing-xl;
+    box-shadow: 0 24px 60px rgba(20, 25, 56, 0.12);
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+  }
+
+  &__summarySubtitle {
+    margin: 0;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $grey-100;
+  }
+
+  &__summaryDetails {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+  }
+
+  &__summaryDetailRow {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__summaryDetailRow dt {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-base;
+    color: $neutral-n600;
+  }
+
+  &__summaryDetailRow dd {
+    margin: 0;
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    color: $grey-100;
+  }
+
+  &__summaryPlanHeader {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+  }
+
+  &__summaryIconWrapper {
+    width: 64px;
+    height: 64px;
+    border-radius: 20px;
+    background: $neutral-n100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__summaryPlanInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__summaryPlanName {
+    margin: 0;
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    color: $grey-100;
+  }
+
+  &__summaryPriceGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__summaryPricePrevious {
+    font-size: $font-size-sm;
+    color: $neutral-n600;
+    text-decoration: line-through;
+  }
+
+  &__summaryPriceFinal {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    color: $grey-100;
+  }
+}
