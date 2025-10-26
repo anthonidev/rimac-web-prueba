@@ -67,6 +67,7 @@
 
   &__image {
     height: auto;
+    z-index: 1;
 
     &--desktop {
       width: 100%;
@@ -205,6 +206,84 @@
       @include mobile {
         display: block;
       }
+    }
+  }
+
+  &__blurLeft {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 432px;
+    height: 800px;
+    z-index: 0;
+    pointer-events: none;
+    user-select: none;
+    background-image: url("/imgs/blur-asset-l.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom left;
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__blurRight {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 432px;
+    height: 800px;
+    z-index: 0;
+    pointer-events: none;
+    user-select: none;
+    background-image: url("/imgs/blur-asset-r.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top right;
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__blurRightMobile {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 256px;
+    height: 400px;
+    z-index: 0;
+    pointer-events: none;
+    user-select: none;
+    display: none;
+    background-image: url("/imgs/blur-asset-r-mobile.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top right;
+
+    @include mobile {
+      display: block;
+    }
+  }
+
+  &__blurLeftMobile {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 256px;
+    height: 400px;
+    z-index: 0;
+    pointer-events: none;
+    user-select: none;
+    display: none;
+    background-image: url("/imgs/blur-asset-l-mobile.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom left;
+
+    @include mobile {
+      display: block;
     }
   }
 }

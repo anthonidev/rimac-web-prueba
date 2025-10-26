@@ -5,6 +5,12 @@ import styles from './HeroSection.module.scss';
 export default function HeroSection() {
   return (
     <section className={styles.hero}>
+      {/* Decorative blur backgrounds */}
+      <div className={styles.hero__blurLeft} aria-hidden="true" />
+      <div className={styles.hero__blurRight} aria-hidden="true" />
+      <div className={styles.hero__blurRightMobile} aria-hidden="true" />
+      <div className={styles.hero__blurLeftMobile} aria-hidden="true" />
+
       <div className={styles.hero__container}>
         {/* Left content - Image and mobile text */}
         <article className={styles.hero__content}>
