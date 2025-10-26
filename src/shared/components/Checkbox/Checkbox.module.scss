@@ -1,0 +1,90 @@
+@import "@/styles/variables";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.checkbox {
+  display: flex;
+  // contenido centrado horizontalmente
+  justify-content: start;
+  align-items: center;
+
+  gap: $spacing-xs;
+  cursor: pointer;
+
+  &--error {
+    .checkbox__input {
+      border-color: $red-rimac-r500;
+
+      &:hover {
+        border-color: $red-rimac-r500;
+      }
+
+      &:focus {
+        outline: 2px solid $red-rimac-r500;
+      }
+    }
+
+    .checkbox__text {
+      color: $red-rimac-r500;
+    }
+  }
+
+  &__input {
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+    border: 1px solid $neutral-n400;
+    border-radius: $border-radius-sm;
+    cursor: pointer;
+    flex-shrink: 0;
+    appearance: none;
+    background-color: $neutral-n0;
+    position: relative;
+    transition: all 0.2s ease;
+
+    &:hover {
+      border-color: $grey-100;
+    }
+
+    &:checked {
+      background-color: $grey-100;
+      border-color: $grey-100;
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 6px;
+        top: 2px;
+        width: 5px;
+        height: 10px;
+        border: solid $neutral-n0;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+      }
+    }
+
+    &:focus {
+      outline: 2px solid $grey-100;
+      outline-offset: 2px;
+    }
+  }
+
+  &__text {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-regular;
+    line-height: $line-height-base;
+    letter-spacing: 0.1px;
+    color: $grey-150;
+    user-select: none;
+
+    @include mobile {
+      font-size: $font-size-sm;
+      letter-spacing: 0.2px;
+      line-height: $line-height-relaxed;
+    }
+  }
+}

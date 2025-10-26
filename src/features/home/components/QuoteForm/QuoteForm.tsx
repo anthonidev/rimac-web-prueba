@@ -1,11 +1,12 @@
 'use client';
 
-import styles from './QuoteForm.module.scss';
-import {
-  useQuoteForm,
-  type QuoteFormValues,
-} from './useQuoteForm';
 import { useQuoteApi } from '@/features/home/hooks/useQuoteApi';
+import { Button } from '@/shared/components/Button/Button';
+import { Checkbox } from '@/shared/components/Checkbox/Checkbox';
+import { DocumentInput } from '@/shared/components/DocumentInput/DocumentInput';
+import { Input } from '@/shared/components/Input/Input';
+import styles from './QuoteForm.module.scss';
+import { useQuoteForm, type QuoteFormValues } from './useQuoteForm';
 
 export default function QuoteForm() {
   const {
@@ -26,149 +27,60 @@ export default function QuoteForm() {
     });
   };
 
-  const documentClassName = [
-    styles.form__document,
-    errors.documentNumber ? styles['form__document--error'] : '',
-  ]
-    .filter(Boolean)
-    .join(' ');
-
-  const phoneFieldClassName = [
-    styles.form__field,
-    errors.phone ? styles['form__field--error'] : '',
-  ]
-    .filter(Boolean)
-    .join(' ');
-
-  const privacyCheckboxClassName = [
-    styles.form__checkbox,
-    errors.acceptPrivacy ? styles['form__checkbox--error'] : '',
-  ]
-    .filter(Boolean)
-    .join(' ');
-
-  const communicationsCheckboxClassName = [
-    styles.form__checkbox,
-    errors.acceptCommunications ? styles['form__checkbox--error'] : '',
-  ]
-    .filter(Boolean)
-    .join(' ');
-
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)} noValidate>
-      {/* Document row - Select and Input together */}
-      <div className={styles.form__control}>
-        <div className={documentClassName}>
-          <select
-            {...documentTypeField}
-            onChange={handleDocumentTypeChange}
-            className={styles.form__document__select}
-            aria-invalid={errors.documentType ? 'true' : 'false'}
-          >
-            <option value="DNI">DNI</option>
-            <option value="RUC">RUC</option>
-          </select>
-          <div className={styles.form__document__input}>
-            <label htmlFor="documentNumber" className={styles.form__document__label}>
-              Nro. de documento
-            </label>
-            <input
-              type="text"
-              id="documentNumber"
-              inputMode="numeric"
-              pattern="[0-9]*"
-              maxLength={currentDocumentType === 'DNI' ? 8 : 11}
-              placeholder={
-                currentDocumentType === 'DNI' ? '30216147' : '20123456789'
-              }
-              className={styles.form__document__field}
-              aria-invalid={errors.documentNumber ? 'true' : 'false'}
-              {...register('documentNumber', {
-                setValueAs: (value) => (value ? value.replace(/\D/g, '') : ''),
-              })}
-            />
-          </div>
-        </div>
-        {errors.documentNumber && (
-          <span className={styles.form__error}>{errors.documentNumber.message}</span>
-        )}
-      </div>
+      <DocumentInput
+        id="documentNumber"
+        label="Nro. de documento"
+        documentType={currentDocumentType}
+        documentTypeRegister={documentTypeField}
+        onDocumentTypeChange={handleDocumentTypeChange}
+        inputMode="numeric"
+        pattern="[0-9]*"
+        maxLength={currentDocumentType === 'DNI' ? 8 : 11}
+        placeholder={currentDocumentType === 'DNI' ? '30216147' : '20123456789'}
+        error={errors.documentNumber?.message}
+        {...register('documentNumber', {
+          setValueAs: (value) => (value ? value.replace(/\D/g, '') : ''),
+        })}
+      />
 
-      {/* Phone field */}
-      <div className={styles.form__control}>
-        <div className={phoneFieldClassName}>
-          <label htmlFor="phone" className={styles.form__label}>
-            Celular
-          </label>
-          <input
-            type="tel"
-            id="phone"
-            inputMode="numeric"
-            pattern="[0-9]*"
-            className={styles.form__input}
-            placeholder="5130216147"
-            aria-invalid={errors.phone ? 'true' : 'false'}
-            {...register('phone', {
-              setValueAs: (value) => (value ? value.replace(/\D/g, '') : ''),
-            })}
-          />
-        </div>
-        {errors.phone && (
-          <span className={styles.form__error}>{errors.phone.message}</span>
-        )}
-      </div>
+      <Input
+        type="tel"
+        id="phone"
+        label="Celular"
+        inputMode="numeric"
+        pattern="[0-9]*"
+        placeholder="5130216147"
+        error={errors.phone?.message}
+        {...register('phone', {
+          setValueAs: (value) => (value ? value.replace(/\D/g, '') : ''),
+        })}
+      />
 
-      {/* Checkboxes */}
-      <div className={styles.form__control}>
-        <label className={privacyCheckboxClassName} htmlFor="privacy">
-          <input
-            type="checkbox"
-            id="privacy"
-            className={styles.form__checkbox__input}
-            aria-invalid={errors.acceptPrivacy ? 'true' : 'false'}
-            {...register('acceptPrivacy')}
-          />
-          <span className={styles.form__checkbox__text}>
-            Acepto la Política de Privacidad
-          </span>
-        </label>
-      </div>
+      <Checkbox
+        id="privacy"
+        label="Acepto la Política de Privacidad"
+        error={errors.acceptPrivacy?.message}
+        {...register('acceptPrivacy')}
+      />
 
-      <div className={styles.form__control}>
-        <label className={communicationsCheckboxClassName} htmlFor="communications">
-          <input
-            type="checkbox"
-            id="communications"
-            className={styles.form__checkbox__input}
-            aria-invalid={errors.acceptCommunications ? 'true' : 'false'}
-            {...register('acceptCommunications')}
-          />
-          <span className={styles.form__checkbox__text}>
-            Acepto la Política de Comunicaciones Comerciales
-          </span>
-        </label>
-      </div>
+      <Checkbox
+        id="communications"
+        label="Acepto la Política de Comunicaciones Comerciales"
+        error={errors.acceptCommunications?.message}
+        {...register('acceptCommunications')}
+      />
 
-      {/* Terms link */}
       <a href="#" className={styles.form__terms}>
         Aplican Términos y Condiciones.
       </a>
 
-      {/* Submit button */}
-      <button
-        type="submit"
-        className={styles.form__submit}
-        disabled={isLoading}
-      >
-        {isLoading ? 'Procesando...' : 'Cotiza aquí'}
-      </button>
+      <Button type="submit" isLoading={isLoading}>
+        Cotiza aquí
+      </Button>
 
-      {/* API Error message */}
-      {apiError && (
-        <span className={styles.form__error} style={{ marginTop: '8px', display: 'block', textAlign: 'center' }}>
-          {apiError}
-        </span>
-      )}
+      {apiError && <span className={styles.form__error}>{apiError}</span>}
     </form>
   );
 }

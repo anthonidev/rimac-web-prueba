@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import QuoteForm from '@/features/home/components/QuoteForm/QuoteForm';
+import Image from 'next/image';
 import styles from './HeroSection.module.scss';
 
 export default function HeroSection() {
@@ -7,11 +7,11 @@ export default function HeroSection() {
     <section className={styles.hero}>
       <div className={styles.hero__container}>
         {/* Left content - Image and mobile text */}
-        <div className={styles.hero__content}>
-          <div className={styles.hero__text}>
+        <article className={styles.hero__content}>
+          <header className={styles.hero__text}>
             <span className={styles.hero__badge}>Seguro Salud Flexible</span>
             <h1 className={styles.hero__title}>Creado para ti y tu familia</h1>
-          </div>
+          </header>
           <div className={styles.hero__image}>
             <Image
               src="/imgs/hero_image.png"
@@ -30,24 +30,24 @@ export default function HeroSection() {
               priority
             />
           </div>
-        </div>
+        </article>
 
         {/* Right content - Form section */}
-        <div className={styles.hero__form}>
+        <aside className={styles.hero__form}>
           <p className={styles['hero__subtitle--mobile']}>
-            Tú eliges cuánto pagar. Ingresa tus datos, cotiza y recibe nuestra asesoría. 100% online.
+            Tú eliges cuánto pagar. Ingresa tus datos, cotiza y recibe nuestra asesoría, 100% online.
           </p>
 
-          <div className={styles.hero__header}>
+          <header className={styles.hero__header}>
             <span className={styles.hero__badge}>Seguro Salud Flexible</span>
             <h1 className={styles.hero__title}>Creado para ti y tu familia</h1>
             <p className={styles.hero__subtitle}>
-              Tú eliges cuánto pagar. Ingresa tus datos, cotiza y recibe nuestra asesoría. 100% online.
+              Tú eliges cuánto pagar. Ingresa tus datos, cotiza y recibe nuestra asesoría, 100% online.
             </p>
-          </div>
+          </header>
 
           <QuoteForm />
-        </div>
+        </aside>
       </div>
     </section>
   );

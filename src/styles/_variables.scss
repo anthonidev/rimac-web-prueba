@@ -1,18 +1,4 @@
 // ==========================================
-// LAYOUT VARIABLES
-// ==========================================
-$max-width-container: 1360px;
-$padding-desktop: 120px;
-$padding-mobile: 24px;
-
-// Component specific
-$hero-padding-top: 32px;
-$hero-padding-bottom: 48px;
-$hero-desktop-padding-left: 128px;
-$hero-desktop-padding-right: 216px;
-$hero-desktop-padding-bottom: 80px;
-
-// ==========================================
 // BREAKPOINTS
 // ==========================================
 $breakpoint-mobile: 768px;
@@ -34,7 +20,11 @@ $spacing-2xl: 64px;
 // ==========================================
 // TYPOGRAPHY
 // ==========================================
-// Font sizes
+
+// Font Family
+$font-family-primary: var(--font-br-sonoma), Arial, Helvetica, sans-serif;
+
+// Font Sizes
 $font-size-xs: 12px;
 $font-size-sm: 14px;
 $font-size-base: 16px;
@@ -45,52 +35,50 @@ $font-size-3xl: 28px;
 $font-size-4xl: 32px;
 $font-size-5xl: 40px;
 
-// Line heights
+// Font Weights
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// Line Heights
 $line-height-tight: 16px;
 $line-height-base: 20px;
 $line-height-relaxed: 24px;
 $line-height-loose: 28px;
+$line-height-extra-loose: 32px;
+$line-height-2xl: 40px;
 
-// Font weights
-$font-weight-regular: 400;
-$font-weight-semibold: 600;
-$font-weight-bold: 700;
-
-// Letter spacing
+// Letter Spacing
 $letter-spacing-tight: 0.2px;
 $letter-spacing-base: 0.4px;
 
 // ==========================================
-// BORDER RADIUS
-// ==========================================
-$border-radius-sm: 4px;
-$border-radius-base: 8px;
-$border-radius-lg: 14px;
-
-// ==========================================
 // COLORS
 // ==========================================
+
 // Neutrals
-$neutral-n700: #141938;
-$neutral-n600: #7981b2;
-$neutral-n500: #a9afd9;
-$neutral-n400: #d7dbf5;
-$neutral-n200: #edeffc;
-$neutral-n100: #fafbff;
 $neutral-n0: #ffffff;
+$neutral-n100: #fafbff;
+$neutral-n200: #edeffc;
+$neutral-n400: #d7dbf5;
+$neutral-n500: #a9afd9;
+$neutral-n600: #7981b2;
+$neutral-n700: #141938;
 
 // Grey
-$grey-150: #0a051e;
-$grey-100: #03050f;
-$grey-80: #2b304e;
-$grey-60: #5e6488;
-$grey-30: #ccd1ee;
-$grey-10: #f8f9ff;
 $grey-0: #ffffff;
+$grey-10: #f8f9ff;
+$grey-30: #ccd1ee;
+$grey-60: #5e6488;
+$grey-80: #2b304e;
+$grey-100: #03050f;
+$grey-150: #0a051e;
 
-// Blue Berry
-$blueberry-b700: #432eff;
+// Blueberry
 $blueberry-b600: #4f4fff;
+$blueberry-b700: #432eff;
 
 // Red RIMAC
 $red-rimac-r500: #ff1c44;
@@ -99,8 +87,8 @@ $red-rimac-r500: #ff1c44;
 $green-aqua-g400: #7df0ba;
 
 // Blur Assets
-$blur-violet-80: #c333ff;
 $blur-aqua-100: #00f4e2;
+$blur-violet-80: #c333ff;
 
 // Feedback
 $feedback-success-ss300: #389e0d;
@@ -110,6 +98,29 @@ $web-gray-4: #c5cbe0;
 
 // Glyph
 $glyph-primary-100: #03050f;
+
+// ==========================================
+// LAYOUT
+// ==========================================
+
+// Container
+$max-width-container: 1360px;
+$padding-desktop: 120px;
+$padding-mobile: 24px;
+
+// Hero Section
+$hero-padding-top: 32px;
+$hero-padding-bottom: 48px;
+$hero-desktop-padding-left: 128px;
+$hero-desktop-padding-right: 216px;
+$hero-desktop-padding-bottom: 80px;
+
+// ==========================================
+// BORDER RADIUS
+// ==========================================
+$border-radius-sm: 4px;
+$border-radius-base: 8px;
+$border-radius-lg: 14px;
 
 // ==========================================
 // GRADIENTS
@@ -125,7 +136,8 @@ $gradient-aqua-lemon: linear-gradient(86.01deg, #00f4e2 0%, #00ff7f 100%);
 // ==========================================
 // MIXINS
 // ==========================================
-// Flexbox center
+
+// Flexbox Utilities
 @mixin flex-center {
   display: flex;
   align-items: center;
@@ -149,7 +161,7 @@ $gradient-aqua-lemon: linear-gradient(86.01deg, #00f4e2 0%, #00ff7f 100%);
   }
 }
 
-// Responsive media queries
+// Responsive Media Queries
 @mixin mobile {
   @media (max-width: $breakpoint-mobile) {
     @content;

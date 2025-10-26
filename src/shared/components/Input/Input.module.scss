@@ -1,0 +1,76 @@
+@import "@/styles/variables";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 56px;
+  padding: 8px $spacing-sm 4px;
+  border: 1px solid $grey-60;
+  border-radius: $border-radius-base;
+  background-color: $neutral-n0;
+  transition: border-color 0.2s ease;
+  position: relative;
+
+  &:hover {
+    border-color: $grey-100;
+  }
+
+  &:focus-within {
+    border-color: $grey-100;
+  }
+
+  &--error {
+    border-color: $red-rimac-r500;
+
+    &:hover,
+    &:focus-within {
+      border-color: $red-rimac-r500;
+    }
+  }
+
+  &__label {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-regular;
+    line-height: $line-height-tight;
+    letter-spacing: $letter-spacing-tight;
+    color: $grey-60;
+    margin-bottom: 4px;
+  }
+
+  &__field {
+    border: none;
+    background: transparent;
+    font-size: $font-size-base;
+    font-weight: $font-weight-regular;
+    line-height: $line-height-relaxed;
+    letter-spacing: $letter-spacing-tight;
+    color: $grey-100;
+    padding: 0;
+    width: 100%;
+
+    &::placeholder {
+      color: $neutral-n500;
+      font-weight: $font-weight-regular;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.error {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-regular;
+  letter-spacing: 0.1px;
+  color: $red-rimac-r500;
+}

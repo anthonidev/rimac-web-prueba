@@ -1,17 +1,63 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "../styles/globals.css";
 import Navbar from "@/shared/components/Navbar/Navbar";
 import Footer from "@/shared/components/Footer/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const brSonoma = localFont({
+  src: [
+    {
+      path: "../../public/fonts/BRSonoma-Light-BF654c452608e0f.otf",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/BRSonoma-LightItalic-BF654c45266aa83.otf",
+      weight: "300",
+      style: "italic",
+    },
+    {
+      path: "../../public/fonts/BRSonoma-Regular-BF654c45266c042.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/BRSonoma-RegularItalic-BF654c452681c11.otf",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../../public/fonts/BRSonoma-Medium-BF654c45266edd1.otf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/BRSonoma-MediumItalic-BF654c45267d45f.otf",
+      weight: "500",
+      style: "italic",
+    },
+    {
+      path: "../../public/fonts/BRSonoma-SemiBold-BF654c45268c340.otf",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/BRSonoma-SemiBoldItalic-BF654c452696350.otf",
+      weight: "600",
+      style: "italic",
+    },
+    {
+      path: "../../public/fonts/BRSonoma-Bold-BF654c4526823f5.otf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/BRSonoma-BoldItalic-BF654c4525c9c27.otf",
+      weight: "700",
+      style: "italic",
+    },
+  ],
+  variable: "--font-br-sonoma",
 });
 
 export const metadata: Metadata = {
@@ -26,8 +72,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} `
-      }
+      <body className={brSonoma.variable}
         style={{
           margin: 0,
           padding: 0,

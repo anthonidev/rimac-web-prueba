@@ -31,7 +31,6 @@
     }
   }
 
-  // Left section with image
   &__content {
     display: flex;
     padding: $hero-padding-top 0 $hero-padding-bottom;
@@ -60,6 +59,7 @@
     @include mobile {
       display: flex;
       flex-direction: column;
+      gap: $spacing-xs;
     }
   }
 
@@ -96,7 +96,6 @@
     }
   }
 
-  // Right section with form
   &__form {
     display: flex;
     flex-direction: column;
@@ -127,13 +126,16 @@
     max-width: 352px;
     display: flex;
     flex-direction: column;
+    gap: 16px;
 
     @include laptop {
-      max-width: 420px;
+      max-width: 352px;
+      gap: 12px;
     }
 
     @include tablet {
-      max-width: 100%;
+      max-width: 300px;
+      gap: 10px;
     }
 
     @include mobile {
@@ -161,9 +163,9 @@
   &__title {
     font-weight: $font-weight-bold;
     font-size: $font-size-4xl;
-    line-height: 40px;
+    line-height: $line-height-2xl;
     color: $grey-100;
-    margin: 10px 0;
+    margin: 0px;
 
     @include laptop {
       font-size: $font-size-4xl;
@@ -183,27 +185,18 @@
   }
 
   &__subtitle {
-    margin: 10px 0;
+    margin: 0px;
     font-weight: $font-weight-semibold;
     font-size: $font-size-sm;
     line-height: $line-height-base;
     letter-spacing: $letter-spacing-tight;
     color: $grey-100;
 
-    @include laptop {
-      font-size: $font-size-base;
-      line-height: $line-height-relaxed;
-    }
-
-    @include tablet {
-      font-size: $font-size-base;
-      line-height: $line-height-relaxed;
-    }
-
     &--mobile {
       display: none;
       font-weight: $font-weight-semibold;
       line-height: $line-height-base;
+      font-size: $font-size-sm;
       letter-spacing: $letter-spacing-tight;
       color: $grey-100;
 

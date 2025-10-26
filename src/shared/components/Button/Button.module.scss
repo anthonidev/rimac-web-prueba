@@ -1,0 +1,62 @@
+@import "@/styles/variables";
+
+.button {
+  width: 195px;
+  height: 64px;
+  padding: 20px 40px;
+  border: none;
+  border-radius: 40px;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-relaxed;
+  letter-spacing: $letter-spacing-base;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:focus {
+    outline: 2px solid $grey-100;
+    outline-offset: 2px;
+  }
+
+  &--primary {
+    background-color: $grey-100;
+    color: $neutral-n0;
+
+    &:hover:not(:disabled) {
+      background-color: $grey-80;
+      transform: translateY(-1px);
+    }
+  }
+
+  &--secondary {
+    background-color: $neutral-n0;
+    color: $grey-100;
+    border: 1px solid $grey-100;
+
+    &:hover:not(:disabled) {
+      background-color: $grey-10;
+      transform: translateY(-1px);
+    }
+  }
+
+  &--full-width {
+    width: 100%;
+  }
+
+  &:disabled {
+    background-color: $grey-30;
+    cursor: not-allowed;
+    transform: none;
+    color: $neutral-n0;
+  }
+
+  @include mobile {
+    width: 100%;
+    height: 56px;
+    padding: 18px 40px;
+  }
+}
