@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import QuoteForm from '../QuoteForm/QuoteForm';
+import QuoteForm from '@/features/home/components/QuoteForm/QuoteForm';
 import styles from './HeroSection.module.scss';
 
 export default function HeroSection() {

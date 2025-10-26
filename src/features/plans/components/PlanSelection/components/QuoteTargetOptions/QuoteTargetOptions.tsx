@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import styles from './QuoteTargetOptions.module.scss';
-import type { QuoteTarget, QuoteTargetOption } from '../../types';
+import type { QuoteTarget, QuoteTargetOption } from '@/features/plans/types';
 
 interface QuoteTargetOptionsProps {
     options: QuoteTargetOption[];

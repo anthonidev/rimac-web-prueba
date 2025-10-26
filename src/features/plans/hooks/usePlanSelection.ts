@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import type { QuoteTarget } from '../types';
+import type { QuoteTarget } from '@/features/plans/types';
 import type { Plan, SelectedPlan, UserData } from '@/store/useQuoteStore';
 import { useQuoteStore } from '@/store/useQuoteStore';
 

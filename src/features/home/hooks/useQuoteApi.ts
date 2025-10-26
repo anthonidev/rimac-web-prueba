@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import api from '@/services/api';
-import { calculateAge } from '@/utils/calculateAge';
+import { calculateAge } from '@/shared/utils/calculateAge';
 import { useQuoteStore, type Plan } from '@/store/useQuoteStore';
 
 interface UserResponse {

@@ -5,7 +5,7 @@ import {
   useQuoteForm,
   type QuoteFormValues,
 } from './useQuoteForm';
-import { useQuoteApi } from '@/hooks/useQuoteApi';
+import { useQuoteApi } from '@/features/home/hooks/useQuoteApi';
 
 export default function QuoteForm() {
   const {

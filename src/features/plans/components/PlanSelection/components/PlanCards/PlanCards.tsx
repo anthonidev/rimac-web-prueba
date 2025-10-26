@@ -3,10 +3,10 @@
 import { Fragment } from 'react';
 import Image from 'next/image';
 import styles from './PlanCards.module.scss';
-import type { QuoteTarget } from '../../types';
+import type { QuoteTarget } from '@/features/plans/types';
 import type { Plan, SelectedPlan } from '@/store/useQuoteStore';
-import { formatPrice, getHighlightTokens } from '../../planUtils';
-import { usePlanCards } from './usePlanCards';
+import { formatPrice, getHighlightTokens } from '@/features/plans/utils';
+import { usePlanCards } from '@/features/plans/hooks/usePlanCards';
 
 interface PlanCardsProps {
     plans: Plan[];

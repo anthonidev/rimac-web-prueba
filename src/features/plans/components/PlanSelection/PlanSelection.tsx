@@ -5,8 +5,8 @@ import { PlanSteps } from './components/PlanSteps/PlanSteps';
 import { QuoteTargetOptions } from './components/QuoteTargetOptions/QuoteTargetOptions';
 import { PlanCards } from './components/PlanCards/PlanCards';
 import { PlanSummary } from './components/PlanSummary/PlanSummary';
-import { QUOTE_TARGET_OPTIONS, RECOMMENDED_PLAN_NAME, STEPS } from './config';
-import { usePlanSelection } from './hooks/usePlanSelection';
+import { QUOTE_TARGET_OPTIONS, RECOMMENDED_PLAN_NAME, STEPS } from '@/features/plans/config';
+import { usePlanSelection } from '@/features/plans/hooks/usePlanSelection';
 
 export default function PlanSelection() {
     const {

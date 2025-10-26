@@ -1,9 +1,9 @@
 'use client';
 
 import { useMemo } from 'react';
-import type { QuoteTarget } from '../../types';
+import type { QuoteTarget } from '@/features/plans/types';
 import type { Plan } from '@/store/useQuoteStore';
-import { DISCOUNT_RATE, applyDiscount, getPlanIcon } from '../../planUtils';
+import { DISCOUNT_RATE, applyDiscount, getPlanIcon } from '@/features/plans/utils';
 
 export interface PlanCardViewModel extends Plan {
   icon: string;

@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import styles from './PlanSummary.module.scss';
 import type { SelectedPlan, UserData } from '@/store/useQuoteStore';
-import { formatPrice, getPlanIcon } from '../../planUtils';
+import { formatPrice, getPlanIcon } from '@/features/plans/utils';
 
 interface PlanSummaryProps {
     user: UserData;
