@@ -1,4 +1,4 @@
-@import "@/styles/variables";
+@use "@/styles/variables" as *;
 
 .button {
   width: 195px;
@@ -58,5 +58,22 @@
     width: 100%;
     height: 56px;
     padding: 18px 40px;
+  }
+
+  &__loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  &__spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      display: block;
+    }
   }
 }

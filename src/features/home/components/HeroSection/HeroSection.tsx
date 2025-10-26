@@ -1,5 +1,8 @@
+"use client";
+
 import QuoteForm from '@/features/home/components/QuoteForm/QuoteForm';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import styles from './HeroSection.module.scss';
 
 export default function HeroSection() {
@@ -13,7 +16,12 @@ export default function HeroSection() {
 
       <div className={styles.hero__container}>
         {/* Left content - Image and mobile text */}
-        <article className={styles.hero__content}>
+        <motion.article
+          className={styles.hero__content}
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+        >
           <header className={styles.hero__text}>
             <span className={styles.hero__badge}>Seguro Salud Flexible</span>
             <h1 className={styles.hero__title}>Creado para ti y tu familia</h1>
@@ -36,10 +44,15 @@ export default function HeroSection() {
               priority
             />
           </div>
-        </article>
+        </motion.article>
 
         {/* Right content - Form section */}
-        <aside className={styles.hero__form}>
+        <motion.aside
+          className={styles.hero__form}
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+        >
           <p className={styles['hero__subtitle--mobile']}>
             Tú eliges cuánto pagar. Ingresa tus datos, cotiza y recibe nuestra asesoría, 100% online.
           </p>
@@ -53,7 +66,7 @@ export default function HeroSection() {
           </header>
 
           <QuoteForm />
-        </aside>
+        </motion.aside>
       </div>
     </section>
   );

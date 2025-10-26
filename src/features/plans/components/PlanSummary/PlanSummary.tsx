@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import styles from './PlanSummary.module.scss';
 import type { SelectedPlan, UserData } from '@/store/useQuoteStore';
-import { formatPrice, getPlanIcon } from '@/features/plans/utils';
+import { formatPrice } from '@/features/plans/utils';
 
 interface PlanSummaryProps {
     user: UserData;
@@ -12,7 +12,6 @@ interface PlanSummaryProps {
 
 export function PlanSummary({ user, plan }: PlanSummaryProps) {
     const fullName = `${user.name} ${user.lastName}`.trim();
-    const iconSrc = getPlanIcon(plan.name);
 
     return (
         <section className={styles.summary} aria-labelledby="plan-summary-heading">

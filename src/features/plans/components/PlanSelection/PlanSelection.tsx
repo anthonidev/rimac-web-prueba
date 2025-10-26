@@ -7,6 +7,7 @@ import { PlanSteps } from '../PlanSteps/PlanSteps';
 import { QuoteTargetOptions } from '../QuoteTargetOptions/QuoteTargetOptions';
 import { PlanCards } from '../PlanCards/PlanCards';
 import { PlanSummary } from '../PlanSummary/PlanSummary';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function PlanSelection() {
     const {
@@ -56,44 +57,60 @@ export default function PlanSelection() {
                     <span className={styles.backLabel}>Volver</span>
                 </button>
 
-                <div className={styles.content}>
-
-                    {
-                        currentStep === 0 && (
-                            <header className={styles.intro}>
-                                <h1 id="plan-selection-heading" className={styles.title}>
-                                    {introTitle}
-                                </h1>
-                                <p className={styles.subtitle}>{introSubtitle}</p>
-                            </header>
-                        )
-                    }
-
+                <AnimatePresence mode="wait">
                     {currentStep === 0 && (
-                        <form className={styles.form} onSubmit={(event) => event.preventDefault()}>
-                            <fieldset className={styles.fieldset}>
-                                <QuoteTargetOptions
-                                    options={QUOTE_TARGET_OPTIONS}
-                                    selectedOption={selectedOption}
-                                    onSelect={handleQuoteTargetChange}
-                                />
-                            </fieldset>
-                        </form>
+                        <motion.div
+                            key="step-0"
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -20 }}
+                            transition={{ duration: 0.4, ease: "easeOut" }}
+                            style={{ width: '100%' }}
+                        >
+                            <div className={styles.content}>
+                                <header className={styles.intro}>
+                                    <h1 id="plan-selection-heading" className={styles.title}>
+                                        {introTitle}
+                                    </h1>
+                                    <p className={styles.subtitle}>{introSubtitle}</p>
+                                </header>
+
+                                <form className={styles.form} onSubmit={(event) => event.preventDefault()}>
+                                    <fieldset className={styles.fieldset}>
+                                        <QuoteTargetOptions
+                                            options={QUOTE_TARGET_OPTIONS}
+                                            selectedOption={selectedOption}
+                                            onSelect={handleQuoteTargetChange}
+                                        />
+                                    </fieldset>
+                                </form>
+                            </div>
+
+                            {selectedOption && plans.length > 0 && (
+                                <div className={styles.cardsSection}>
+                                    <PlanCards
+                                        plans={plans}
+                                        variant={selectedOption}
+                                        recommendedPlanName={RECOMMENDED_PLAN_NAME}
+                                        onSelectPlan={handlePlanSelect}
+                                    />
+                                </div>
+                            )}
+                        </motion.div>
                     )}
 
-                </div>
-                {currentStep === 1 && chosenPlan && <PlanSummary user={userData} plan={chosenPlan} />}
-
-                {currentStep === 0 && selectedOption && plans.length > 0 && (
-                    <div className={styles.cardsSection}>
-                        <PlanCards
-                            plans={plans}
-                            variant={selectedOption}
-                            recommendedPlanName={RECOMMENDED_PLAN_NAME}
-                            onSelectPlan={handlePlanSelect}
-                        />
-                    </div>
-                )}
+                    {currentStep === 1 && chosenPlan && (
+                        <motion.div
+                            key="step-1"
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: 20 }}
+                            transition={{ duration: 0.4, ease: "easeOut" }}
+                        >
+                            <PlanSummary user={userData} plan={chosenPlan} />
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
         </section>
     );

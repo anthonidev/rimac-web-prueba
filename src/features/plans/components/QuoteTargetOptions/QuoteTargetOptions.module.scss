@@ -1,4 +1,4 @@
-@import "@/styles/variables";
+@use "@/styles/variables" as *;
 
 .options {
   display: flex;
@@ -23,7 +23,7 @@
   display: flex;
   flex-direction: column;
   gap: $spacing-lg;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 
   @include mobile {
     min-height: 160px;
@@ -32,13 +32,17 @@
 
 .option:hover {
   border: 2px solid $grey-150;
-
   box-shadow: 0 32px 72px rgba(20, 25, 56, 0.14);
+  transform: translateY(-4px) scale(1.01);
 }
 
 .option[data-selected="true"] {
   border: 2px solid $grey-150;
   box-shadow: 0 32px 72px rgba(20, 25, 56, 0.18);
+}
+
+.option[data-selected="true"]:hover {
+  transform: scale(1.005);
 }
 
 .radio {

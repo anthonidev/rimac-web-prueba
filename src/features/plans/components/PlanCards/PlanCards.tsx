@@ -7,6 +7,7 @@ import { formatPrice, getHighlightTokens } from '@/features/plans/utils';
 import type { Plan, SelectedPlan } from '@/store/useQuoteStore';
 import Image from 'next/image';
 import { Fragment } from 'react';
+import { motion } from 'framer-motion';
 import styles from './PlanCards.module.scss';
 
 const CAROUSEL_OPTIONS = {
@@ -46,8 +47,19 @@ export function PlanCards({ plans, variant, recommendedPlanName, onSelectPlan }:
         return null;
     }
 
-    const renderPlanCard = (plan: (typeof cards)[number]) => (
-        <article key={plan.name} className={styles.card} data-recommended={plan.isRecommended}>
+    const renderPlanCard = (plan: (typeof cards)[number], index: number) => (
+        <motion.article
+            key={plan.name}
+            className={styles.card}
+            data-recommended={plan.isRecommended}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+                duration: 0.5,
+                delay: index * 0.1,
+                ease: "easeOut"
+            }}
+        >
             {plan.isRecommended && <span className={styles.badge}>Plan recomendado</span>}
 
             <header className={styles.header}>
@@ -102,18 +114,18 @@ export function PlanCards({ plans, variant, recommendedPlanName, onSelectPlan }:
             >
                 Seleccionar Plan
             </button>
-        </article>
+        </motion.article>
     );
 
     return (
-        <div className={styles.container}>
+        <div className={styles.container} key={`plans-${variant}`}>
             {showSlider ? (
                 <div className={styles.slider} data-slider-active={showControls}>
                     <div className={styles.viewport} ref={emblaRef}>
                         <div className={styles.slideContainer}>
-                            {cards.map((plan) => (
+                            {cards.map((plan, index) => (
                                 <div key={plan.name} className={styles.slide}>
-                                    {renderPlanCard(plan)}
+                                    {renderPlanCard(plan, index)}
                                 </div>
                             ))}
                         </div>
@@ -146,7 +158,7 @@ export function PlanCards({ plans, variant, recommendedPlanName, onSelectPlan }:
                     )}
                 </div>
             ) : (
-                <div className={styles.grid}>{cards.map((plan) => renderPlanCard(plan))}</div>
+                <div className={styles.grid}>{cards.map((plan, index) => renderPlanCard(plan, index))}</div>
             )}
         </div>
     );
