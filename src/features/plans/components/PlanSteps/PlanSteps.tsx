@@ -1,7 +1,7 @@
 'use client';
 
-import styles from './PlanSteps.module.scss';
 import type { PlanStep } from '@/features/plans/types';
+import styles from './PlanSteps.module.scss';
 
 interface PlanStepsProps {
     steps: PlanStep[];

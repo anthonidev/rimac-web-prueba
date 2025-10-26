@@ -27,10 +27,19 @@ export function QuoteTargetOptions({ options, selectedOption, onSelect }: QuoteT
                         />
                         <span className={styles.checkmark} aria-hidden="true" />
                         <article className={styles.content}>
-                            <div className={styles.iconWrapper}>
-                                <Image src={option.icon} alt="" width={48} height={48} priority />
+                            <div className={styles.header}>
+                                <div className={styles.iconWrapper}>
+                                    <Image
+                                        src={option.icon}
+                                        alt=""
+                                        fill
+                                        priority
+                                        sizes="(max-width: 600px) 32px, 48px"
+                                        className={styles.icon}
+                                    />
+                                </div>
+                                <h2 className={styles.title}>{option.label}</h2>
                             </div>
-                            <h2 className={styles.title}>{option.label}</h2>
                             <p className={styles.description}>{option.description}</p>
                         </article>
                     </label>

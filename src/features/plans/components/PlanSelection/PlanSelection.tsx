@@ -1,12 +1,12 @@
 'use client';
 
 import styles from './PlanSelection.module.scss';
-import { PlanSteps } from './components/PlanSteps/PlanSteps';
-import { QuoteTargetOptions } from './components/QuoteTargetOptions/QuoteTargetOptions';
-import { PlanCards } from './components/PlanCards/PlanCards';
-import { PlanSummary } from './components/PlanSummary/PlanSummary';
 import { QUOTE_TARGET_OPTIONS, RECOMMENDED_PLAN_NAME, STEPS } from '@/features/plans/config';
 import { usePlanSelection } from '@/features/plans/hooks/usePlanSelection';
+import { PlanSteps } from '../PlanSteps/PlanSteps';
+import { QuoteTargetOptions } from '../QuoteTargetOptions/QuoteTargetOptions';
+import { PlanCards } from '../PlanCards/PlanCards';
+import { PlanSummary } from '../PlanSummary/PlanSummary';
 
 export default function PlanSelection() {
     const {
@@ -76,24 +76,15 @@ export default function PlanSelection() {
                                 </fieldset>
                             </form>
 
-                            {selectedOption ? (
-                                plans.length > 0 ? (
-                                    <PlanCards
-                                        plans={plans}
-                                        variant={selectedOption}
-                                        recommendedPlanName={RECOMMENDED_PLAN_NAME}
-                                        onSelectPlan={handlePlanSelect}
-                                    />
-                                ) : (
-                                    <p className={styles.helper}>
-                                        Actualmente no contamos con planes disponibles para esta selección.
-                                    </p>
-                                )
-                            ) : (
-                                <p className={styles.helper}>
-                                    Selecciona una opción para ver los planes disponibles.
-                                </p>
-                            )}
+                            {selectedOption && plans.length > 0 && (
+                                <PlanCards
+                                    plans={plans}
+                                    variant={selectedOption}
+                                    recommendedPlanName={RECOMMENDED_PLAN_NAME}
+                                    onSelectPlan={handlePlanSelect}
+                                />
+                            )
+                            }
                         </>
                     )}
 

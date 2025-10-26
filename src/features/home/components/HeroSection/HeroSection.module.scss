@@ -2,7 +2,9 @@
 
 .hero {
   padding: 2px $padding-desktop;
-
+  min-height: calc(100vh - 170px);
+  display: flex;
+  align-items: center;
   @include laptop {
     padding: 12px $spacing-2xl;
   }

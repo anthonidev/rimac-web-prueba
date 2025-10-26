@@ -11,7 +11,7 @@
   left: 50%;
   width: 100vw;
   margin-left: -50vw;
-  padding: $spacing-md 0;
+  padding: $spacing-sm 0;
   background: $neutral-n200;
 
   @include mobile {
@@ -27,14 +27,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: $spacing-lg;
 
   @include tablet {
     padding: 0 $spacing-xl;
   }
 
   @include mobile {
-    padding: 0 $padding-mobile;
+    padding: 16px $padding-mobile;
     justify-content: flex-start;
     gap: $spacing-sm;
     border-bottom: 1px solid $neutral-n400;
@@ -84,27 +83,30 @@
 }
 
 .backIcon {
-  width: 40px;
-  height: 40px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  border: 1px solid $neutral-n400;
+  border: 2px solid $blueberry-b600;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   background: $neutral-n0;
-  font-size: $font-size-lg;
+  font-size: $line-height-tight;
   font-weight: $font-weight-bold;
 
   @include mobile {
-    width: 32px;
-    height: 32px;
-    border: none;
+    width: 24px;
+    height: 24px;
+    border: 1px solid $neutral-n500;
+    color: $neutral-n500;
     background: transparent;
     font-size: $font-size-base;
   }
 }
 
 .backLabel {
+  font-size: $font-size-base;
+  letter-spacing: $letter-spacing-base;
   @include mobile {
     display: none;
   }
@@ -113,30 +115,31 @@
 .wrapper {
   max-width: $max-width-container;
   margin: 0 auto;
-  padding: $spacing-2xl $padding-desktop $spacing-2xl;
+  padding: $spacing-lg $padding-desktop $spacing-2xl;
   display: flex;
   flex-direction: column;
-  gap: $spacing-2xl;
+  gap: $spacing-xl;
 
   @include tablet {
     padding: $spacing-2xl $spacing-xl;
   }
 
   @include mobile {
-    padding: $spacing-xl $padding-mobile;
+    padding: $spacing-sm $padding-mobile;
   }
 }
 
 .content {
   display: flex;
   flex-direction: column;
-  gap: $spacing-2xl;
+  max-width: 544px;
+  margin: 0 auto;
 }
 
 .intro {
   display: flex;
   flex-direction: column;
-  gap: $spacing-sm;
+  gap: $spacing-xs;
   max-width: 640px;
   margin: 0 auto;
   text-align: center;
@@ -151,16 +154,30 @@
 
 .title {
   margin: 0;
-  font-size: $font-size-4xl;
+  font-size: $font-size-5xl;
   font-weight: $font-weight-bold;
-  line-height: 1.2;
-  color: $grey-100;
+  line-height: 48px;
+  color: $neutral-n700;
+  letter-spacing: -0.6;
+
+  @include tablet {
+    font-size: $font-size-4xl;
+    line-height: 44px;
+  }
+
+  @include mobile {
+    font-size: $font-size-3xl;
+    line-height: 36px;
+    letter-spacing: -$letter-spacing-tight;
+  }
 }
 
 .subtitle {
   margin: 0;
-  font-size: $font-size-base;
-  color: $neutral-n600;
+  font-size: $line-height-tight;
+  color: $neutral-n700;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-loose;
 }
 
 .form {
@@ -171,10 +188,4 @@
   border: none;
   margin: 0;
   padding: 0;
-}
-
-.helper {
-  margin-top: $spacing-xl;
-  font-size: $font-size-base;
-  color: $neutral-n600;
 }

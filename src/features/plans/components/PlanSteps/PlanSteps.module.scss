@@ -4,7 +4,7 @@
   list-style: none;
   display: flex;
   align-items: center;
-  gap: $spacing-lg;
+  gap: $spacing-sm;
   margin: 0;
   padding: 0;
 
@@ -14,15 +14,16 @@
 }
 
 .step {
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  justify-content: center;
   gap: $spacing-sm;
-  font-size: $font-size-sm;
   color: $neutral-n600;
 }
 
 .step[data-active="true"] {
   color: $grey-100;
+  font-weight: $font-weight-bold;
 
   .stepNumber {
     background: $blueberry-b600;
@@ -32,28 +33,29 @@
 }
 
 .stepNumber {
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
+  font-size: $font-size-xs;
+  line-height: $line-height-tight;
   border-radius: 50%;
   border: 1px solid $neutral-n400;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-weight: $font-weight-semibold;
-  background: $neutral-n0;
+  font-weight: $font-weight-bold;
   color: $neutral-n600;
 }
 
 .stepLabel {
-  font-weight: $font-weight-semibold;
+  letter-spacing: $letter-spacing-tight;
+  line-height: $line-height-tight;
 }
 
 .stepDivider {
   display: inline-block;
-  width: 72px;
+  width: 32px;
   height: 0;
-  margin-left: $spacing-md;
-  border-bottom: 1px dashed $neutral-n400;
+  border-bottom: 2px dashed $blueberry-b600;
 }
 
 .stepsMobile {
@@ -61,25 +63,26 @@
 
   @include mobile {
     display: flex;
-    flex-direction: column;
-    gap: $spacing-xs;
+    flex-direction: row;
+    gap: $spacing-sm;
     flex: 1;
   }
 }
 
 .stepsMobileLabel {
-  font-size: $font-size-xs;
+  font-size: 10px;
   font-weight: $font-weight-semibold;
   letter-spacing: $letter-spacing-base;
+  line-height: $line-height-tight;
   text-transform: uppercase;
-  color: $grey-100;
+  color: $neutral-n700;
 }
 
 .stepsMobileBar {
-  width: 100%;
+  width: 212px;
   height: 6px;
-  border-radius: $border-radius-base;
-  background: $neutral-n200;
+  border-radius: 20px;
+  background: $neutral-n400;
   overflow: hidden;
 }
 

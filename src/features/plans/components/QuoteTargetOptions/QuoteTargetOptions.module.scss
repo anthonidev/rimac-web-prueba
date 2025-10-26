@@ -1,10 +1,14 @@
 @import "@/styles/variables";
 
 .options {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
+  display: flex;
   gap: $spacing-lg;
   margin-top: $spacing-lg;
+
+  @include mobile {
+    flex-direction: column;
+    gap: $spacing-md;
+  }
 }
 
 .option {
@@ -13,22 +17,27 @@
   border-radius: 24px;
   background: $neutral-n0;
   box-shadow: 0 24px 60px rgba(20, 25, 56, 0.08);
-  padding: $spacing-xl;
+  padding: 16px 24px 40px 24px;
   cursor: pointer;
   min-height: 216px;
   display: flex;
   flex-direction: column;
   gap: $spacing-lg;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  @include mobile {
+    min-height: 160px;
+  }
 }
 
 .option:hover {
-  border-color: $blueberry-b600;
+  border: 2px solid $grey-150;
+
   box-shadow: 0 32px 72px rgba(20, 25, 56, 0.14);
 }
 
 .option[data-selected="true"] {
-  border-color: $blueberry-b600;
+  border: 2px solid $grey-150;
   box-shadow: 0 32px 72px rgba(20, 25, 56, 0.18);
 }
 
@@ -78,26 +87,65 @@
   gap: $spacing-sm;
 }
 
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: $spacing-sm;
+
+  @include mobile {
+    flex-direction: row;
+    align-items: center;
+    gap: $spacing-xs;
+  }
+}
+
 .iconWrapper {
-  width: 64px;
-  height: 64px;
-  border-radius: 20px;
-  background: $neutral-n100;
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+
+  @include laptop {
+    width: 44px;
+    height: 44px;
+  }
+
+  @include tablet {
+    width: 40px;
+    height: 40px;
+  }
+
+  @include mobile {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.icon {
+  object-fit: contain;
 }
 
 .title {
   margin: 0;
   font-size: $font-size-2xl;
   font-weight: $font-weight-bold;
-  color: $grey-100;
+  line-height: $line-height-loose;
+  color: $neutral-n700;
+  letter-spacing: -0.2px;
+
+  @include mobile {
+    font-size: $font-size-xl;
+  }
 }
 
 .description {
   margin: 0;
-  font-size: $font-size-sm;
-  color: $neutral-n600;
-  line-height: $line-height-relaxed;
+  font-size: $font-size-xs;
+  color: $neutral-n700;
+  line-height: $line-height-base;
+  letter-spacing: $letter-spacing-tight;
 }
