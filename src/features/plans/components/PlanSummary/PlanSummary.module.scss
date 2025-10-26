@@ -5,110 +5,106 @@
   display: flex;
   flex-direction: column;
   gap: $spacing-xl;
+  @include mobile {
+    margin-top: $spacing-sm;
+  }
 }
 
 .title {
   margin: 0;
-  font-size: $font-size-3xl;
+  font-size: $font-size-5xl;
   font-weight: $font-weight-bold;
   color: $grey-100;
+
+  @include mobile {
+    font-size: $font-size-4xl;
+    letter-spacing: -0.6px;
+    text-align: center;
+  }
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: $spacing-xl;
+  display: flex;
+  justify-content: center;
 }
 
 .card {
+  width: 100%;
   background: $neutral-n0;
   border-radius: 24px;
-  padding: $spacing-xl;
-  box-shadow: 0 24px 60px rgba(20, 25, 56, 0.12);
+  padding: 24px 32px;
+  box-shadow: 0px 1px 24px 0px #aeacf340;
+
   display: flex;
   flex-direction: column;
-  gap: $spacing-lg;
+  gap: $spacing-sm;
 }
 
-.subtitle {
-  margin: 0;
-  font-size: $font-size-lg;
-  font-weight: $font-weight-semibold;
-  color: $grey-100;
-}
-
-.details {
-  margin: 0;
-  padding: 0;
+.cardHeader {
   display: flex;
   flex-direction: column;
-  gap: $spacing-md;
+  gap: $spacing-sm;
 }
 
-.detailRow {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-
-  dt {
-    font-size: $font-size-xs;
-    font-weight: $font-weight-semibold;
-    text-transform: uppercase;
-    letter-spacing: $letter-spacing-base;
-    color: $neutral-n600;
-  }
-
-  dd {
-    margin: 0;
-    font-size: $font-size-base;
-    font-weight: $font-weight-semibold;
-    color: $grey-100;
-  }
+.overline {
+  font-size: 10px;
+  font-weight: $font-weight-bold;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  line-height: $line-height-tight;
+  color: $neutral-n700;
 }
 
-.planHeader {
+.person {
   display: flex;
   align-items: center;
-  gap: $spacing-md;
+  gap: 12px;
 }
 
-.iconWrapper {
-  width: 64px;
-  height: 64px;
-  border-radius: 20px;
-  background: $neutral-n100;
-  display: flex;
+.personIcon {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
 }
 
-.planInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.planName {
+.personName {
   margin: 0;
-  font-size: $font-size-2xl;
   font-weight: $font-weight-bold;
-  color: $grey-100;
+  font-size: $font-size-xl;
+  line-height: $line-height-loose;
+  letter-spacing: -$letter-spacing-tight;
 }
 
-.priceGroup {
+.divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(207, 210, 239, 0.7);
+}
+
+.section {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 12px;
+  padding-top: $spacing-xs;
 }
 
-.pricePrevious {
-  font-size: $font-size-sm;
-  color: $neutral-n600;
-  text-decoration: line-through;
-}
-
-.priceFinal {
-  font-size: $font-size-2xl;
+.sectionTitle {
+  margin: 0;
+  font-size: $font-size-base;
   font-weight: $font-weight-bold;
+  color: $neutral-n700;
+
+  line-height: $line-height-tight;
+  letter-spacing: $letter-spacing-tight;
+}
+
+.detailLine {
+  margin: 0;
+  font-size: $font-size-sm;
   color: $grey-100;
+  letter-spacing: 0.1px;
+  display: flex;
+  gap: 4px;
 }

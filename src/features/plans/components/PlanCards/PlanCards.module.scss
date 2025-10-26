@@ -1,6 +1,31 @@
 @import "@/styles/variables";
 
-.list {
+.container {
+  width: 100%;
+}
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  margin-top: $spacing-2xl;
+  background: #fafbff;
+}
+
+.viewport {
+  padding-bottom: $spacing-lg;
+}
+
+.slideContainer {
+  display: flex;
+  gap: $spacing-sm;
+}
+
+.slide {
+  flex: 0 0 99%;
+}
+
+.grid {
   margin-top: $spacing-2xl;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));
@@ -11,38 +36,31 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: $spacing-lg;
+  gap: $spacing-md;
   background: $neutral-n0;
-  border-radius: 28px;
-  padding: $spacing-2xl $spacing-xl;
-  box-shadow: 0 32px 68px rgba(20, 25, 56, 0.12);
-  border: 2px solid transparent;
+  border-radius: 24px;
+  padding: 68px 32px 48px 32px;
+  box-shadow: 0px 1px 32px 0px #aeacf359;
   min-height: 100%;
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .card:hover {
-  transform: translateY(-4px);
   box-shadow: 0 40px 90px rgba(20, 25, 56, 0.18);
-}
-
-.card[data-recommended="true"] {
-  border-color: $blueberry-b600;
-  box-shadow: 0 48px 96px rgba(67, 46, 255, 0.2);
 }
 
 .badge {
   position: absolute;
   top: $spacing-lg;
-  left: $spacing-xl;
-  padding: 4px $spacing-sm;
-  border-radius: 9999px;
+  padding: 2px 8px;
+  border-radius: 6px;
   background: $green-aqua-g400;
   color: $grey-100;
   font-weight: $font-weight-bold;
   font-size: $font-size-xs;
-  text-transform: uppercase;
   letter-spacing: $letter-spacing-base;
+  color: $neutral-n700;
+  line-height: $line-height-tight;
 }
 
 .header {
@@ -54,9 +72,11 @@
 
 .title {
   margin: 0;
-  font-size: $font-size-3xl;
+  font-size: $font-size-2xl;
   font-weight: $font-weight-bold;
-  color: $grey-100;
+  letter-spacing: -$letter-spacing-tight;
+  line-height: $line-height-extra-loose;
+  color: $neutral-n700;
 }
 
 .label {
@@ -64,7 +84,7 @@
   text-transform: uppercase;
   font-size: $font-size-xs;
   font-weight: $font-weight-semibold;
-  letter-spacing: $letter-spacing-base;
+  letter-spacing: 0.6px;
   color: $neutral-n600;
 }
 
@@ -82,19 +102,14 @@
 }
 
 .priceCurrent {
-  font-size: $font-size-3xl;
+  font-size: $font-size-xl;
   font-weight: $font-weight-bold;
-  color: $grey-100;
+  color: $neutral-n700;
+  letter-spacing: -$letter-spacing-tight;
 }
 
 .iconWrapper {
-  width: 64px;
-  height: 64px;
-  border-radius: 20px;
-  background: $neutral-n100;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-center;
 }
 
 .divider {
@@ -116,14 +131,14 @@
 .featureItem {
   display: flex;
   align-items: flex-start;
-  gap: $spacing-sm;
+  gap: $spacing-xs;
 }
 
 .featureBullet {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: $blueberry-b600;
+  background: $neutral-n700;
   margin-top: 8px;
   flex-shrink: 0;
 }
@@ -132,23 +147,27 @@
   font-size: $font-size-base;
   line-height: $line-height-loose;
   color: $grey-100;
+  letter-spacing: -0.1px;
 }
 
 .featureText strong {
   font-weight: $font-weight-semibold;
   color: $grey-100;
+  letter-spacing: -0.1px;
 }
 
 .selectButton {
   margin-top: auto;
   align-self: stretch;
-  padding: $spacing-sm;
+  padding: 14px 32px;
   background: $red-rimac-r500;
   color: $neutral-n0;
   border: none;
   border-radius: 32px;
-  font-size: $font-size-base;
-  font-weight: $font-weight-semibold;
+  font-size: $font-size-lg;
+  line-height: $line-height-base;
+  letter-spacing: $letter-spacing-base;
+  font-weight: $font-weight-bold;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -156,4 +175,46 @@
 .selectButton:hover {
   transform: translateY(-2px);
   box-shadow: 0 16px 32px rgba(255, 28, 68, 0.3);
+}
+
+.controls {
+  display: none;
+
+  @include mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-sm;
+    padding-bottom: $spacing-lg;
+  }
+}
+
+.controlButton {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid $blueberry-b600;
+  background: $neutral-n0;
+  color: $blueberry-b600;
+  font-size: $font-size-xl;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  &:not(:disabled):hover {
+    background: $blueberry-b600;
+    color: $neutral-n0;
+  }
+}
+
+.pagination {
+  font-size: $font-size-base;
+  color: $neutral-n700;
 }

@@ -72,16 +72,10 @@ export function usePlanSelection(): UsePlanSelectionResult {
       return '';
     }
 
-    return currentStep === 0
-      ? `${userData.name} ¿Para quién deseas cotizar?`
-      : `${userData.name}, revisa y confirma tu plan`;
-  }, [currentStep, userData]);
+    return `${userData.name} ¿Para quién deseas cotizar?`
+  }, [userData]);
 
-  const introSubtitle = useMemo(() => {
-    return currentStep === 0
-      ? 'Selecciona la opción que se ajuste más a tus necesidades.'
-      : 'Verifica que tus datos y la información del plan sean correctos antes de continuar.';
-  }, [currentStep]);
+  const introSubtitle ='Selecciona la opción que se ajuste más a tus necesidades.'
 
   return {
     userData: userData ?? null,

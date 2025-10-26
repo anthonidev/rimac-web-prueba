@@ -57,39 +57,43 @@ export default function PlanSelection() {
                 </button>
 
                 <div className={styles.content}>
-                    <header className={styles.intro}>
-                        <h1 id="plan-selection-heading" className={styles.title}>
-                            {introTitle}
-                        </h1>
-                        <p className={styles.subtitle}>{introSubtitle}</p>
-                    </header>
+
+                    {
+                        currentStep === 0 && (
+                            <header className={styles.intro}>
+                                <h1 id="plan-selection-heading" className={styles.title}>
+                                    {introTitle}
+                                </h1>
+                                <p className={styles.subtitle}>{introSubtitle}</p>
+                            </header>
+                        )
+                    }
 
                     {currentStep === 0 && (
-                        <>
-                            <form className={styles.form} onSubmit={(event) => event.preventDefault()}>
-                                <fieldset className={styles.fieldset}>
-                                    <QuoteTargetOptions
-                                        options={QUOTE_TARGET_OPTIONS}
-                                        selectedOption={selectedOption}
-                                        onSelect={handleQuoteTargetChange}
-                                    />
-                                </fieldset>
-                            </form>
-
-                            {selectedOption && plans.length > 0 && (
-                                <PlanCards
-                                    plans={plans}
-                                    variant={selectedOption}
-                                    recommendedPlanName={RECOMMENDED_PLAN_NAME}
-                                    onSelectPlan={handlePlanSelect}
+                        <form className={styles.form} onSubmit={(event) => event.preventDefault()}>
+                            <fieldset className={styles.fieldset}>
+                                <QuoteTargetOptions
+                                    options={QUOTE_TARGET_OPTIONS}
+                                    selectedOption={selectedOption}
+                                    onSelect={handleQuoteTargetChange}
                                 />
-                            )
-                            }
-                        </>
+                            </fieldset>
+                        </form>
                     )}
 
-                    {currentStep === 1 && chosenPlan && <PlanSummary user={userData} plan={chosenPlan} />}
                 </div>
+                {currentStep === 1 && chosenPlan && <PlanSummary user={userData} plan={chosenPlan} />}
+
+                {currentStep === 0 && selectedOption && plans.length > 0 && (
+                    <div className={styles.cardsSection}>
+                        <PlanCards
+                            plans={plans}
+                            variant={selectedOption}
+                            recommendedPlanName={RECOMMENDED_PLAN_NAME}
+                            onSelectPlan={handlePlanSelect}
+                        />
+                    </div>
+                )}
             </div>
         </section>
     );
