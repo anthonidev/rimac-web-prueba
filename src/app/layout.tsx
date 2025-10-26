@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "../styles/globals.css";
+
 import Navbar from "@/shared/components/Navbar/Navbar";
 import Footer from "@/shared/components/Footer/Footer";
-
+import "../styles/globals.css";
 const brSonoma = localFont({
   src: [
     {

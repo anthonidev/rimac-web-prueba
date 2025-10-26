@@ -56,7 +56,7 @@ Aplicación web moderna que permite a los usuarios cotizar seguros de salud de m
 ### 1. Clonar el repositorio
 
 ```bash
-git clone <url-del-repositorio>
+git clone https://github.com/anthonidev/rimac-web-prueba
 cd rimac-web
 ```
 
@@ -176,4 +176,4 @@ npm run test:coverage
 
 ---
 
-**Desarrollado como parte del desafío técnico de RIMAC Seguros**
+**Desarrollado como parte del desafío técnico de RIMAC Seguros | Anthoni Portocarrero Rodriguez**
