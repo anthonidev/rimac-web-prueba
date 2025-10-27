@@ -14,7 +14,7 @@ export interface UsePlanSelectionResult {
   chosenPlan: SelectedPlan | null;
   introTitle: string;
   introSubtitle: string;
-  plansSectionRef: React.RefObject<HTMLDivElement>;
+  plansSectionRef: React.RefObject<HTMLDivElement | null>;
   handleBack: () => void;
   handleQuoteTargetChange: (option: QuoteTarget) => void;
   handlePlanSelect: (plan: SelectedPlan) => void;
