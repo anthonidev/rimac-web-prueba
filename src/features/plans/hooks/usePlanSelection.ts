@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import type { QuoteTarget } from '@/features/plans/types';
 import type { Plan, SelectedPlan, UserData } from '@/store/useQuoteStore';
@@ -14,6 +14,7 @@ export interface UsePlanSelectionResult {
   chosenPlan: SelectedPlan | null;
   introTitle: string;
   introSubtitle: string;
+  plansSectionRef: React.RefObject<HTMLDivElement>;
   handleBack: () => void;
   handleQuoteTargetChange: (option: QuoteTarget) => void;
   handlePlanSelect: (plan: SelectedPlan) => void;
@@ -28,6 +29,7 @@ export function usePlanSelection(): UsePlanSelectionResult {
 
   const [selectedOption, setSelectedOption] = useState<QuoteTarget | null>(null);
   const [currentStep, setCurrentStep] = useState(0);
+  const plansSectionRef = useRef<HTMLDivElement>(null);
 
   const plans = useMemo<Plan[]>(() => userData?.plans ?? [], [userData]);
 
@@ -55,6 +57,16 @@ export function usePlanSelection(): UsePlanSelectionResult {
       if (chosenPlan) {
         setChosenPlan(null);
       }
+
+      // Scroll to plans section after a brief delay to ensure content is rendered
+      setTimeout(() => {
+        if (plansSectionRef.current) {
+          plansSectionRef.current.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+          });
+        }
+      }, 100);
     },
     [chosenPlan, setChosenPlan],
   );
@@ -85,6 +97,7 @@ export function usePlanSelection(): UsePlanSelectionResult {
     chosenPlan,
     introTitle,
     introSubtitle,
+    plansSectionRef,
     handleBack,
     handleQuoteTargetChange,
     handlePlanSelect,

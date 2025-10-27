@@ -18,6 +18,7 @@ export default function PlanSelection() {
         chosenPlan,
         introTitle,
         introSubtitle,
+        plansSectionRef,
         handleBack,
         handleQuoteTargetChange,
         handlePlanSelect,
@@ -87,7 +88,7 @@ export default function PlanSelection() {
                             </div>
 
                             {selectedOption && plans.length > 0 && (
-                                <div className={styles.cardsSection}>
+                                <div ref={plansSectionRef} className={styles.cardsSection}>
                                     <PlanCards
                                         plans={plans}
                                         variant={selectedOption}

@@ -57,7 +57,7 @@ Aplicación web moderna que permite a los usuarios cotizar seguros de salud de m
 
 ```bash
 git clone https://github.com/anthonidev/rimac-web-prueba
-cd rimac-web
+cd rimac-web-prueba
 ```
 
 ### 2. Instalar dependencias
