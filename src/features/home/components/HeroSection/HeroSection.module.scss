@@ -5,6 +5,7 @@
   min-height: calc(100vh - 170px);
   display: flex;
   align-items: center;
+  position: relative;
   @include laptop {
     padding: 12px $spacing-2xl;
   }
@@ -230,7 +231,7 @@
 
   &__blurRight {
     position: absolute;
-    top: 0;
+    top: -64px;
     right: 0;
     width: 432px;
     height: 800px;
@@ -249,7 +250,7 @@
 
   &__blurRightMobile {
     position: absolute;
-    top: 0;
+    top: -64px;
     right: 0;
     width: 256px;
     height: 400px;
@@ -266,13 +267,12 @@
       display: block;
     }
   }
-
   &__blurLeftMobile {
     position: absolute;
-    bottom: 0;
     left: 0;
     width: 256px;
     height: 400px;
+    bottom: 0;
     z-index: 0;
     pointer-events: none;
     user-select: none;
